@@ -51,25 +51,25 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         double sum;
-        double sum2, sum3;
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Введите сумму: ");
-        sum = scanner.nextDouble();
-
-        if (sum >= 500 && sum < 1000){
-
-            System.out.println("Вам предоставлена скидка 3%.");
-            sum2 = sum - ((sum * 3 )/ 100);
-            System.out.println("Сумма с учетом скидки составляет:" + sum2);
-        }
-
-        else if ( sum >= 1000) {
-            System.out.println("Вам предоставлена скидка 5%.");
-            sum3 = sum - ((sum * 5) / 100);
-            System.out.println("Сумма с учетом скидки составляет:" + sum3);
+        double c = 0;
+        System.out.println("Введите стоимость покупки ");
+        sum = scanner.nextInt();
+        if (sum > 1000) {
+            c = sum * 0.95;
+            System.out.println("Стоимость покупки с учетом скидки 5% составляет: " + c);
         }
         else
-            System.out.println("Скидка для данной суммы не предоставлятеся.");
+            if (sum > 500) {
+                c = sum * 0.97;
+                System.out.println("Стоимость покупки с учетом скидки 3% составляет: " + c);
+            }
+            else
+                if (sum <= 500 && sum > 0)
+                    System.out.println("Скидки нет! Стоимость покупки составляет: " + sum);
+                else
+                    System.out.println("Введено некорректное значение суммы покупки!");
     }
 
     private static void Example_4() {
@@ -103,7 +103,8 @@ public class Main {
             System.out.println("Число: " +  number + " на три делится нацело = " + difference);}
 
         else
-            System.out.println("Число: " + number + " на 3 нацело не делится.");}
+            System.out.println("Число: " + number + " на 3 нацело не делится.");
+    }
 
 
 
@@ -111,43 +112,16 @@ public class Main {
         System.out.println("\nПример 7\n");
         Scanner scanner = new Scanner(System.in);
 
-        int number;
+        System.out.println("Введите целое трехзначное число: ");
 
         int hundreds = 0, decimals = 0, ones = 0;
-
-        System.out.println("Введите целое трехзначное число: ");
-        number = scanner.nextInt();
-        ones = number / 1 % 10;
-        decimals = number / 10 % 10;
-        hundreds = number / 100 % 10;
-
-        if (ones < hundreds){
-            System.out.println(hundreds + " больше чем " + ones);}
-
-        else if  (ones == hundreds){
-            System.out.println(hundreds + " равно " + ones);}
-
-        else
-            System.out.println(hundreds + " меньше чем " + ones);
-
-        if (ones < decimals){
-            System.out.println(decimals +" больше чем "  +ones);}
-
-        else if (ones == decimals){
-            System.out.println(decimals +" равно "  +ones);}
-
-        else
-            System.out.println(decimals +" меньше чем "  +ones);
-
-        if (decimals < hundreds){
-            System.out.println(hundreds+ " больше чем " +decimals);}
-
-        else if (decimals == hundreds){
-            System.out.println(hundreds+ " равно " +decimals);}
-
-        else
-            System.out.println( hundreds +" меньше чем " + decimals );
-
+        ones = number%10;
+        decimals = number/10%10;
+        hundreds = number/100%10;
+        System.out.println(ones > hundreds ? "Последняя цифра больше первой" : (ones < hundreds ? "Первая цифра больше последней" : "Первая цифра равна последней"));
+        System.out.println(decimals > hundreds ? "Вторая цифра больше первой" : (decimals < hundreds ? "Первая цифра больше второй" : "Первая цифра равна второй"));
+        System.out.println(ones < decimals ? "Вторая цифра больше последней" : (ones > decimals ? "Последняя цифра больше второй" : "Последняя цифра равна второй"));
+        System.out.println();
     }
 
 
@@ -282,4 +256,5 @@ public class Main {
         Example_8();
         Example_9();
         Example_10();
-    }}
+    }
+}
